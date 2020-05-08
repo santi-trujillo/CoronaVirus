@@ -3,10 +3,31 @@ const axios = window.axios
 
 function getData() {
     console.log('Axios', axios)
+
     axios.get('https://corona-stats.online/?format=json').then(function(response) {
-        var countryList = response.data.data
-        console.log(countryList)
-        //for (var index = 0; index < countryList.length; index++) {
+
+    var countryList = response.data.data
+
+    console.log(countryList)
+
+    var trTitle = document.createElement('tr')
+
+    var content = document.querySelector('.trIndex')
+
+    tdTitles = ['active', 'cases', 'casesPerOneMillion', 'confirmed', 'continent', 'country',
+                'countryCode', 'critical', 'deaths', 'deathsPerOneMillion', 'recovered','tests',
+                'testsPerOneMillion', 'todayCases', 'todayDeaths', 'updated', 'flag']
+
+    for (var index = 0; index < tdTitles.length; index++ ) {
+        var title = tdTitles[index]
+        var tdData = document.createElement('td')
+        tdData.innerText = title
+        content.appendChild(tdData)
+    }
+
+
+    //for (var index = 0; index < countryList.length; index++) {
+        // countryList[index]
     for (var country of countryList) {
                 //var country = countryList[index]
         console.log(country.countryInfo.flag)
@@ -28,61 +49,65 @@ function getData() {
         var updated = country.updated
         var countryInfo = country.countryInfo.flag
 
-        var ulAc = document.getElementById('data')
+        var tableData = document.getElementById('data')
 
-        var liActive = document.createElement('li')
-        var liCases = document.createElement('li')
-        var liMillion = document.createElement('li')
-        var liConfirmed = document.createElement('li')
-        var liContinent = document.createElement('li')
-        var liCountry = document.createElement('li')
-        var liCode = document.createElement('li')
-        var liCritical = document.createElement('li')
-        var liDeaths = document.createElement('li')
-        var liDeaMil = document.createElement('li')
-        var liRecovered = document.createElement('li')
-        var liTests = document.createElement('li')
-        var liTestMil = document.createElement('li')
-        var liTodayCases = document.createElement('li')
-        var liTodayDeaths = document.createElement('li')
-        var liUpdated = document.createElement('li')
-        var liCountryInfo = document.createElement('img')
+        var trData = document.createElement('tr')
 
-        liActive.innerText = 'active: ' + active
-        liCases.innerText = 'cases: ' + cases
-        liMillion.innerText = 'casesPerOneMillion: ' + casesPerOneMillion
-        liConfirmed.innerText = 'confirmed: : ' + confirmed
-        liContinent.innerText = 'continent: : ' + continent
-        liCountry.innerText = 'country: : ' + countryName
-        liCode.innerText = 'countryCode: : ' + countryCode
-        liCritical.innerText = 'critical: : ' + critical
-        liDeaths.innerText = 'deaths: : ' + deaths
-        liDeaMil.innerText = 'deathsPerOneMillion: : ' + deathsPerOneMillion
-        liRecovered.innerText = 'recovered: : ' + recovered
-        liTests.innerText = 'tests: : ' + tests
-        liTestMil.innerText = 'testsPerOneMillion: : ' + testsPerOneMillion
-        liTodayCases.innerText = 'todayCases: : ' + todayCases
-        liTodayDeaths.innerText = 'todayDeaths: : ' + todayDeaths
-        liUpdated.innerText = 'updated: : ' + updated
-        liCountryInfo.setAttribute('src', countryInfo)
+        var tdActive = document.createElement('td')
+        var tdCases = document.createElement('td')
+        var tdMillion = document.createElement('td')
+        var tdConfirmed = document.createElement('td')
+        var tdContinent = document.createElement('td')
+        var tdCountry = document.createElement('td')
+        var tdCode = document.createElement('td')
+        var tdCritical = document.createElement('td')
+        var tdDeaths = document.createElement('td')
+        var tdDeaMil = document.createElement('td')
+        var tdRecovered = document.createElement('td')
+        var tdTests = document.createElement('td')
+        var tdTestMil = document.createElement('td')
+        var tdTodayCases = document.createElement('td')
+        var tdTodayDeaths = document.createElement('td')
+        var tdUpdated = document.createElement('td')
+        var tdCountryInfo = document.createElement('img')
 
-        ulAc.appendChild(liActive)
-        ulAc.appendChild(liCases)
-        ulAc.appendChild(liMillion)
-        ulAc.appendChild(liConfirmed)
-        ulAc.appendChild(liContinent)
-        ulAc.appendChild(liCountry)
-        ulAc.appendChild(liCode)
-        ulAc.appendChild(liCritical)
-        ulAc.appendChild(liDeaths)
-        ulAc.appendChild(liDeaMil)
-        ulAc.appendChild(liRecovered)
-        ulAc.appendChild(liTests)
-        ulAc.appendChild(liTestMil)
-        ulAc.appendChild(liTodayCases)
-        ulAc.appendChild(liTodayDeaths)
-        ulAc.appendChild(liUpdated)
-        ulAc.appendChild(liCountryInfo)
+        tdActive.innerText = /*'active: ' +*/ active
+        tdCases.innerText = /*'cases: ' +*/ cases
+        tdMillion.innerText = /*'casesPerOneMillion: ' +*/ casesPerOneMillion
+        tdConfirmed.innerText = /*'confirmed: : ' +*/ confirmed
+        tdContinent.innerText = /*'continent: : ' +*/ continent
+        tdCountry.innerText = /*'country: : ' +*/ countryName
+        tdCode.innerText = /*'countryCode: : ' +*/ countryCode
+        tdCritical.innerText = /*'critical: : ' +*/ critical
+        tdDeaths.innerText = /*'deaths: : ' +*/ deaths
+        tdDeaMil.innerText = /*'deathsPerOneMillion: : ' +*/ deathsPerOneMillion
+        tdRecovered.innerText = /*'recovered: : ' +*/ recovered
+        tdTests.innerText = /*'tests: : '*/ + tests
+        tdTestMil.innerText = /*'testsPerOneMillion: : ' +*/ testsPerOneMillion
+        tdTodayCases.innerText = /*'todayCases: : ' +*/ todayCases
+        tdTodayDeaths.innerText = /*'todayDeaths: : ' +*/ todayDeaths
+        tdUpdated.innerText = /*'updated: : ' +*/ updated
+        tdCountryInfo.setAttribute('src', countryInfo)
+
+        tableData.appendChild(tdActive)
+        tableData.appendChild(tdCases)
+        tableData.appendChild(tdMillion)
+        tableData.appendChild(tdConfirmed)
+        tableData.appendChild(tdContinent)
+        tableData.appendChild(tdCountry)
+        tableData.appendChild(tdCode)
+        tableData.appendChild(tdCritical)
+        tableData.appendChild(tdDeaths)
+        tableData.appendChild(tdDeaMil)
+        tableData.appendChild(tdRecovered)
+        tableData.appendChild(tdTests)
+        tableData.appendChild(tdTestMil)
+        tableData.appendChild(tdTodayCases)
+        tableData.appendChild(tdTodayDeaths)
+        tableData.appendChild(tdUpdated)
+        tableData.appendChild(tdCountryInfo)
+
+        tableData.appendChild(trData)
         }
     })
 }
