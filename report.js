@@ -84,6 +84,5 @@ function getData() {
         ulAc.appendChild(liUpdated)
         ulAc.appendChild(liCountryInfo)
         }
-        
     })
 }
