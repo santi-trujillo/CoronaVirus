@@ -68,15 +68,15 @@ function getData() {
             tdConfirmed.innerText = confirmed
             tdContinent.innerText = continent
             tdCountry.innerText = countryName
-            tdCode.innerText = cocountryCode
+            tdCode.innerText = countryCode
             tdCritical.innerText = critical
             tdDeaths.innerText = deaths
-            tdDeaMil.innerText = deathsPerOdeathsPerOneMillion
+            tdDeaMil.innerText = deathsPerOneMillion
             tdRecovered.innerText = recovered
-            tdTests.innerText =tests
-            tdTestMil.innerText = testsPerOtestsPerOneMillion
-            tdTodayCases.innerText = ttodayCases
-            tdTodayDeaths.innerText = totodayDeaths
+            tdTests.innerText = tests
+            tdTestMil.innerText = testsPerOneMillion
+            tdTodayCases.innerText = todayCases
+            tdTodayDeaths.innerText = todayDeaths
             tdUpdated.innerText = new Date(updated).toDateString()
             tdCountryInfo.setAttribute('src', countryInfo)
 
