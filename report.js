@@ -7,6 +7,12 @@ var tdTitles = ['active', 'cases', 'casesPerOneMillion', 'confirmed', 'continent
 var content = document.querySelector('.trIndex')
 var tableData = document.getElementById('data')
 
+function addDataToCell (info) {
+    var tdInfo = document.createElement('td')
+    tdInfo.innerText = info
+    return tdInfo
+}
+
 function getData() {
 
     axios.get('https://corona-stats.online/?format=json').then(function(response) {
@@ -24,59 +30,28 @@ function getData() {
             // countryList[index]
         for (var country of countryList) {
                     //var country = countryList[index]
-            var active = country.active
-            var cases = country.cases
-            var casesPerOneMillion = country.casesPerOneMillion
-            var confirmed = country.confirmed
-            var continent = country.continent
-            var countryName = country.country
-            var countryCode = country.countryCode
-            var critical = country.critical
-            var deaths = country.deaths
-            var deathsPerOneMillion = country.deathsPerOneMillion
-            var recovered = country.recovered
-            var tests = country.tests
-            var testsPerOneMillion = country.testsPerOneMillion
-            var todayCases = country.todayCases
-            var todayDeaths = country.todayDeaths
-            var updated = country.updated
             var countryInfo = country.countryInfo.flag
 
             var trData = document.createElement('tr')
 
-            var tdActive = document.createElement('td')
-            var tdCases = document.createElement('td')
-            var tdMillion = document.createElement('td')
-            var tdConfirmed = document.createElement('td')
-            var tdContinent = document.createElement('td')
-            var tdCountry = document.createElement('td')
-            var tdCode = document.createElement('td')
-            var tdCritical = document.createElement('td')
-            var tdDeaths = document.createElement('td')
-            var tdDeaMil = document.createElement('td')
-            var tdRecovered = document.createElement('td')
-            var tdTests = document.createElement('td')
-            var tdTestMil = document.createElement('td')
-            var tdTodayCases = document.createElement('td')
-            var tdTodayDeaths = document.createElement('td')
-            var tdUpdated = document.createElement('td')
+            var tdActive = addDataToCell(country.active)
+            var tdCases = addDataToCell(country.cases)
+            var tdMillion = addDataToCell(country.casesPerOneMillion)
+            var tdConfirmed = addDataToCell(country.confirmed)
+            var tdContinent = addDataToCell(country.continent)
+            var tdCountry = addDataToCell(country.country)
+            var tdCode = addDataToCell(country.countryCode)
+            var tdCritical = addDataToCell(country.critical)
+            var tdDeaths = addDataToCell(country.deaths)
+            var tdDeaMil = addDataToCell(country.deathsPerOneMillion)
+            var tdRecovered = addDataToCell(country.recovered)
+            var tdTests = addDataToCell(country.tests)
+            var tdTestMil = addDataToCell(country.testsPerOneMillion)
+            var tdTodayCases = addDataToCell(country.todayCases)
+            var tdTodayDeaths = addDataToCell(country.todayDeaths)
+            var tdUpdated = addDataToCell(country.updated)
             var tdCountryInfo = document.createElement('img')
 
-            tdActive.innerText = active
-            tdCases.innerText = cases
-            tdMillion.innerText = casesPerOneMillion
-            tdConfirmed.innerText = confirmed
-            tdContinent.innerText = continent
-            tdCountry.innerText = countryName
-            tdCode.innerText = countryCode
-            tdCritical.innerText = critical
-            tdDeaths.innerText = deaths
-            tdDeaMil.innerText = deathsPerOneMillion
-            tdRecovered.innerText = recovered
-            tdTests.innerText = tests
-            tdTestMil.innerText = testsPerOneMillion
-            tdTodayCases.innerText = todayCases
-            tdTodayDeaths.innerText = todayDeaths
             tdUpdated.innerText = new Date(updated).toDateString()
             tdCountryInfo.setAttribute('src', countryInfo)
 
