@@ -29,8 +29,6 @@ function getData() {
         //for (var index = 0; index < countryList.length; index++) {
             // countryList[index]
         for (var country of countryList) {
-                    //var country = countryList[index]
-            var countryInfo = country.countryInfo.flag
 
             var trData = document.createElement('tr')
 
@@ -49,29 +47,16 @@ function getData() {
             var tdTestMil = addDataToCell(country.testsPerOneMillion)
             var tdTodayCases = addDataToCell(country.todayCases)
             var tdTodayDeaths = addDataToCell(country.todayDeaths)
-            var tdUpdated = addDataToCell(country.updated)
+            var tdUpdated = addDataToCell(new Date(country.updated).toDateString())
             var tdCountryInfo = document.createElement('img')
 
-            tdUpdated.innerText = new Date(updated).toDateString()
-            tdCountryInfo.setAttribute('src', countryInfo)
+            var allData = [tdActive, tdCases, tdMillion, tdConfirmed, tdContinent, tdCountry, tdCode, tdCritical,
+                tdDeaths, tdDeaMil, tdRecovered, tdTests, tdTestMil, tdTodayCases, tdTodayDeaths,
+                tdUpdated, tdCountryInfo]
 
-            tableData.appendChild(tdActive)
-            tableData.appendChild(tdCases)
-            tableData.appendChild(tdMillion)
-            tableData.appendChild(tdConfirmed)
-            tableData.appendChild(tdContinent)
-            tableData.appendChild(tdCountry)
-            tableData.appendChild(tdCode)
-            tableData.appendChild(tdCritical)
-            tableData.appendChild(tdDeaths)
-            tableData.appendChild(tdDeaMil)
-            tableData.appendChild(tdRecovered)
-            tableData.appendChild(tdTests)
-            tableData.appendChild(tdTestMil)
-            tableData.appendChild(tdTodayCases)
-            tableData.appendChild(tdTodayDeaths)
-            tableData.appendChild(tdUpdated)
-            tableData.appendChild(tdCountryInfo)
+            tdCountryInfo.setAttribute('src', country.countryInfo.flag)
+
+            trData.append(...allData)
 
             tableData.appendChild(trData)
         }
